@@ -1,5 +1,11 @@
 # propr
 
+## 1.0.2
+
+### Patch Changes
+
+- 2829019: Forked package to @2digits/propr
+
 ## 1.0.1
 
 ### Patch Changes
