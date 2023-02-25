@@ -1,3 +1,8 @@
+[![npm version][npm-version-src]][npm-version-href]
+[![npm downloads][npm-downloads-src]][npm-downloads-href]
+[![Github Actions][github-actions-src]][github-actions-href]
+[![bundle][bundle-src]][bundle-href]
+
 ![propr](.github/banner.svg)
 
 ## Installation
@@ -115,3 +120,14 @@ Fetches data from the Prepr API.
 ##### `query: URLSearchParams`
 
 The URL search parameters for the API request.
+
+<!-- Badges -->
+
+[npm-version-src]: https://img.shields.io/npm/v/@2digits/propr?style=flat-square
+[npm-version-href]: https://npmjs.com/package/@2digits/propr
+[npm-downloads-src]: https://img.shields.io/npm/dm/@2digits/propr?style=flat-square
+[npm-downloads-href]: https://npmjs.com/package/@2digits/propr
+[github-actions-src]: https://img.shields.io/github/actions/workflow/status/2digits-agency/propr/ci.yml?style=flat-square
+[github-actions-href]: https://github.com/2digits-agency/propr/actions/workflows/ci.yml
+[bundle-src]: https://img.shields.io/bundlephobia/minzip/@2digits/propr?style=flat-square
+[bundle-href]: https://bundlephobia.com/result?p=@2digits/propr
