@@ -4,7 +4,7 @@
 
 To install the package, run:
 
-```sh
+```bash
 pnpm install propr
 ```
 
