@@ -1,4 +1,4 @@
-# ![propr](.github/banner.svg)
+![propr](.github/banner.svg)
 
 ## Installation
 
