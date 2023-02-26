@@ -1,5 +1,11 @@
 # propr
 
+## 1.0.5
+
+### Patch Changes
+
+- 170dafe: Switched to unbuild for bundling
+
 ## 1.0.4
 
 ### Patch Changes
