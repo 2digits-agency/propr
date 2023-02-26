@@ -29,7 +29,7 @@ export interface PreprClientOptions {
   userId?: string;
 }
 
-export default class PreprClient {
+class PreprClient {
   /**
    * The headers used for all requests made by this PreprClient instance.
    * @private
