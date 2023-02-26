@@ -17,6 +17,8 @@
     "url": "https://github.com/2digits-agency/propr"
   },
   "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
