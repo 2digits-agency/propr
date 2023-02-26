@@ -1,6 +1,6 @@
 {
   "name": "@2digits/propr",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A proper way to interface with prepr.io",
   "license": "MIT",
   "private": false,

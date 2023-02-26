@@ -1,5 +1,12 @@
 # propr
 
+## 1.0.3
+
+### Patch Changes
+
+- ba185fa: Added turborepo for quicker task execution
+- f8198e9: Added a banner to the top of the readme
+
 ## 1.0.2
 
 ### Patch Changes
