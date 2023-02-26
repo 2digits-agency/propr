@@ -1,5 +1,11 @@
 # propr
 
+## 1.0.4
+
+### Patch Changes
+
+- 943e6aa: Fixed the readme's install instructions
+
 ## 1.0.3
 
 ### Patch Changes
