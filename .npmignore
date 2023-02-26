@@ -2,3 +2,5 @@
 src
 pnpm-lock.yaml
 .github
+.turbo
+turbo.json

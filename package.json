@@ -1,27 +1,24 @@
 {
   "name": "@2digits/propr",
   "version": "1.0.2",
-  "private": false,
   "description": "A proper way to interface with prepr.io",
-  "keywords": [
-    "prepr",
-    "prepr-sdk"
-  ],
+  "license": "MIT",
+  "private": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/2digits-agency/propr"
+  },
   "author": {
     "name": "Niels Mentink",
     "url": "https://niels.ment.ink",
     "email": "niels@ment.ink"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/2digits-agency/propr"
-  },
-  "license": "MIT",
-  "sideEffects": false,
+  "keywords": [
+    "prepr",
+    "prepr-sdk"
+  ],
   "type": "module",
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
@@ -30,22 +27,27 @@
       "default": "./dist/index.js"
     }
   },
+  "module": "./dist/index.mjs",
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
+    "ci": "turbo lint build",
     "lint": "tsc",
-    "ci": "pnpm run lint && pnpm run build",
-    "release": "pnpm run lint && pnpm run build && changeset publish"
+    "publish": "changeset publish",
+    "release": "turbo publish"
   },
-  "devDependencies": {
-    "@changesets/cli": "^2.26.0",
-    "tsup": "^6.6.3",
-    "typescript": "^4.9.5"
-  },
+  "sideEffects": false,
+  "types": "./dist/index.d.ts",
   "volta": {
     "node": "18.14.2"
   },
   "dependencies": {
     "murmurhash": "^2.0.1",
     "ofetch": "^1.0.1"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.26.0",
+    "tsup": "^6.6.3",
+    "turbo": "^1.8.2",
+    "typescript": "^4.9.5"
   }
 }
