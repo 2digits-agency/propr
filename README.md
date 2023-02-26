@@ -10,7 +10,7 @@
 To install the package, run:
 
 ```bash
-pnpm install propr
+pnpm install @2digits/propr
 ```
 
 ## Usage
@@ -18,7 +18,7 @@ pnpm install propr
 To use propr, import the createPreprClient function from the package and call it with the options for your Prepr account:
 
 ```typescript
-import { createPreprClient } from "propr";
+import { createPreprClient } from "@2digits/propr";
 
 const client = createPreprClient({
   token: "your_token_here",
