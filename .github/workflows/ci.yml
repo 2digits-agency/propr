@@ -1,27 +1,43 @@
-name: CI
+name: 🛂 CI/CD
+
 on:
   push:
     branches:
-      - "**"
+      - '**'
 
 jobs:
   build:
+    name: ⚗️ Lint, typecheck and format
     runs-on: ubuntu-latest
     strategy:
       matrix:
         version: [16, 18]
-    env:
-      TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-      TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
     steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - name: 🗃️ Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 🛸 Setup PNPM
+        uses: pnpm/action-setup@v2
         with:
           version: 7
-      - uses: actions/setup-node@v3
+
+      - name: 🏭 Setup Node
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.version }}
-          cache: "pnpm"
+          cache: 'pnpm'
 
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm run ci
+      - name: 📦 Install dependencies
+        run: pnpm install
+
+      - name: 🏗️ Build packages
+        run: pnpm run build
+
+      - name: 🩻 Check types
+        run: pnpm run types
+
+      - name: 🔬 Lint files
+        run: pnpm run lint
+
+      - name: 🧬 Format files
+        run: pnpm run format

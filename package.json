@@ -33,10 +33,11 @@
   ],
   "scripts": {
     "build": "unbuild",
-    "ci": "turbo types build",
     "types": "tsc --noEmit",
     "lint": "eslint .",
-    "format": "prettier --write \"**/*\" --ignore-unknown",
+    "lint:fix": "eslint . --fix",
+    "format": "bash -c 'prettier \"**/*\" --ignore-unknown --ignore-path <(cat .gitignore .prettierignore) --check'",
+    "format:fix": "bash -c 'prettier \"**/*\" --ignore-unknown --ignore-path <(cat .gitignore .prettierignore) --write'",
     "publish": "changeset publish",
     "release": "turbo publish"
   },

@@ -4,9 +4,11 @@
     "build": {
       "outputs": ["dist/**"]
     },
-    "lint": {},
+    "types": { "cache": false },
+    "format": { "cache": false },
+    "lint": { "cache": false },
     "publish": {
-      "dependsOn": ["build", "lint"],
+      "dependsOn": ["build", "types", "lint", "format"],
       "cache": false
     }
   }

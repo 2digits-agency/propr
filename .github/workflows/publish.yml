@@ -1,26 +1,38 @@
-name: Publish
+name: 💠 Publish
+
 on:
   push:
     branches:
-      - "main"
+      - 'main'
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 jobs:
   publish:
+    name: 🦋 Changesets
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: pnpm/action-setup@v2
+      - name: 🗃️ Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 🛸 Setup PNPM
+        uses: pnpm/action-setup@v2
         with:
           version: 7
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16.x
-          cache: "pnpm"
 
-      - run: pnpm install --frozen-lockfile
-      - name: Create Release Pull Request or Publish
+      - name: 🏭 Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+
+      - name: 📦 Install dependencies
+        run: pnpm install
+
+      - name: 🏗️ Build packages
+        run: pnpm run build
+
+      - name: 🪄 Create Release Pull Request or Publish
         id: changesets
         uses: changesets/action@v1
         with:
@@ -28,5 +40,3 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-          TURBO_TOKEN: ${{ secrets.TURBO_TOKEN }}
-          TURBO_TEAM: ${{ secrets.TURBO_TEAM }}
