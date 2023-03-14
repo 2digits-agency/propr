@@ -1,13 +1,4 @@
 {
-  "compilerOptions": {
-    "target": "es2016",
-    "module": "commonjs",
-    "noEmit": true,
-    "importsNotUsedAsValues": "error",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "strict": true,
-    "noUncheckedIndexedAccess": true,
-    "skipLibCheck": true
-  }
+  "extends": "@2digits/tsconfig/tsconfig.json",
+  "include": ["**/*.ts", "./.eslintrc.cjs"]
 }

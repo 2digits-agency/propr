@@ -1,5 +1,6 @@
-import { FetchOptions, Headers, ofetch } from "ofetch";
-import murmurhash from "murmurhash";
+import murmurhash from 'murmurhash';
+import type { FetchOptions } from 'ofetch';
+import { Headers, ofetch } from 'ofetch';
 
 const HASH_MULTIPLIER = 2 ** 32 / 10_000;
 
@@ -41,7 +42,7 @@ class PreprClient {
    * @default https://cdn.prepr.io
    * @private
    */
-  #baseUrl = new URL("https://cdn.prepr.io");
+  #baseUrl = new URL('https://cdn.prepr.io');
 
   /**
    * The timeout in milliseconds for requests made by this PreprClient instance.
@@ -60,7 +61,7 @@ class PreprClient {
    * The path used for the request.
    * @private
    */
-  #path = "";
+  #path = '';
 
   /**
    * The GraphQL query used for the request.
@@ -89,7 +90,7 @@ class PreprClient {
 
     if (options.baseUrl) this.#baseUrl = new URL(options.baseUrl);
 
-    if (typeof options.timeout === "number") this.#timeout = options.timeout;
+    if (typeof options.timeout === 'number') this.#timeout = options.timeout;
 
     if (options.userId) this.#userId = this.calculateUserId(options.userId);
   }
@@ -108,8 +109,7 @@ class PreprClient {
    * @returns This PreprClient instance.
    */
   userId(userId?: string): this {
-    this.#userId =
-      typeof userId === "string" ? this.calculateUserId(userId) : userId;
+    this.#userId = typeof userId === 'string' ? this.calculateUserId(userId) : userId;
 
     return this;
   }
@@ -130,7 +130,7 @@ class PreprClient {
    * @returns This PreprClient instance.
    */
   sort(field: string): this {
-    this.query.set("sort", field);
+    this.query.set('sort', field);
     return this;
   }
 
@@ -140,7 +140,7 @@ class PreprClient {
    * @returns This PreprClient instance.
    */
   limit(limit: number): this {
-    this.query.set("limit", `${limit}`);
+    this.query.set('limit', `${limit}`);
     return this;
   }
 
@@ -150,7 +150,7 @@ class PreprClient {
    * @returns This PreprClient instance.
    */
   skip(skip: number): this {
-    this.query.set("skip", `${skip}`);
+    this.query.set('skip', `${skip}`);
     return this;
   }
 
@@ -170,7 +170,7 @@ class PreprClient {
    * @returns This PreprClient instance.
    */
   token(token: string): this {
-    this.#headers.set("Authorization", `Bearer ${token}`);
+    this.#headers.set('Authorization', `Bearer ${token}`);
     return this;
   }
 
@@ -200,19 +200,19 @@ class PreprClient {
    * @param options - The options for the request. These will be merged with the options set on this PreprClient instance.
    * @returns A Promise that resolves to the response from the Prepr API.
    */
-  async fetch<T>(
+  async fetch<TData>(
     request: RequestInfo = this.#path,
-    options?: FetchOptions<"json">
-  ): Promise<T> {
+    options?: FetchOptions<'json'>,
+  ): Promise<TData> {
     const controller = new AbortController();
-    const fetchTimeout = setTimeout(controller.abort, this.#timeout);
+    const fetchTimeout = setTimeout(() => controller.abort(), this.#timeout);
 
-    if (this.#userId) this.#headers.set("Prepr-ABTesting", `${this.#userId}`);
+    if (this.#userId) this.#headers.set('Prepr-ABTesting', `${this.#userId}`);
 
     const gqlOptions = (
       this.#graphqlQuery
         ? {
-            method: "POST",
+            method: 'POST',
             body: {
               query: this.#graphqlQuery,
               variables: this.#graphqlVariables,
@@ -230,13 +230,13 @@ class PreprClient {
         clearTimeout(fetchTimeout);
 
         this.query = new URLSearchParams();
-        this.#graphqlQuery = "";
+        this.#graphqlQuery = '';
         this.#graphqlVariables = {};
       },
       ...gqlOptions,
     });
 
-    return fetcher<T>(request, options);
+    return fetcher<TData>(request, options);
   }
 }
 
@@ -246,5 +246,4 @@ class PreprClient {
  * @returns A new instance of `PreprClient`.
  * @public
  */
-export const createPreprClient = (options: PreprClientOptions) =>
-  new PreprClient(options);
+export const createPreprClient = (options: PreprClientOptions) => new PreprClient(options);
