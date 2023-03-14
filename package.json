@@ -33,8 +33,11 @@
   ],
   "scripts": {
     "build": "unbuild",
-    "ci": "turbo lint build",
-    "lint": "tsc",
+    "types": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "bash -c 'prettier \"**/*\" --ignore-unknown --ignore-path <(cat .gitignore .prettierignore) --check'",
+    "format:fix": "bash -c 'prettier \"**/*\" --ignore-unknown --ignore-path <(cat .gitignore .prettierignore) --write'",
     "publish": "changeset publish",
     "release": "turbo publish"
   },
@@ -46,9 +49,15 @@
     "ofetch": "^1.0.1"
   },
   "devDependencies": {
+    "@2digits/eslint-config": "^0.1.0",
+    "@2digits/prettier-config": "^0.1.0",
+    "@2digits/tsconfig": "^0.0.1",
     "@changesets/cli": "^2.26.0",
-    "turbo": "^1.8.2",
+    "eslint": "^8.36.0",
+    "prettier": "^2.8.4",
+    "turbo": "^1.8.3",
     "typescript": "^4.9.5",
     "unbuild": "^1.1.2"
-  }
+  },
+  "prettier": "@2digits/prettier-config"
 }
