@@ -1,5 +1,11 @@
 # propr
 
+## 1.0.6
+
+### Patch Changes
+
+- 0cbff7c: Added @2digits/prettier-config, @2digits/eslint-config and @2digits/tsconfig
+
 ## 1.0.5
 
 ### Patch Changes
@@ -50,26 +56,23 @@
   To use propr, import the createPreprClient function from the package and call it with the options for your Prepr account:
 
   ```typescript
-  import { createPreprClient } from "propr";
+  import { createPreprClient } from 'propr';
 
   const client = createPreprClient({
-    token: "your_token_here",
+    token: 'your_token_here',
   });
   ```
 
   Once you have created the client, you can use it to fetch data from Prepr:
 
   ```typescript
-  const articles = await client.fetch("/articles");
+  const articles = await client.fetch('/articles');
   ```
 
   You can also chain various methods to the client to specify additional options:
 
   ```typescript
-  const articles = await client
-    .sort("publishedAt")
-    .limit(10)
-    .fetch("/articles");
+  const articles = await client.sort('publishedAt').limit(10).fetch('/articles');
   ```
 
   The client also supports GraphQL queries:
@@ -83,12 +86,9 @@
     }
   }`;
 
-  const variables = { slug: "your-article-slug" };
+  const variables = { slug: 'your-article-slug' };
 
-  const article = await client
-    .graphqlQuery(query)
-    .graphqlVariables(variables)
-    .fetch();
+  const article = await client.graphqlQuery(query).graphqlVariables(variables).fetch();
   ```
 
   ## API
